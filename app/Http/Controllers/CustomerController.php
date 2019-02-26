@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -23,7 +23,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view("customer.add");
     }
 
     /**
@@ -34,7 +34,17 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer=new Customer;
+        $customer->First_Name = $request->First_Name;
+        $customer->Last_Name  = $request->Last_Name ;
+        $customer->DOB = $request->DOB;
+        $customer->Gender = $request->Gender;
+        $customer->Phone_Number = $request->Phone_Number;
+        $customer->Email = $request->Email;
+        $customer->Company_Name = $request->Company_Name;
+        $customer->save();
+        return redirect('index');
+
     }
 
     /**
